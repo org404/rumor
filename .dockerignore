@@ -1,0 +1,6 @@
+docker-compose.yml
+Dockerfile
+run.sh
+.venv
+.git
+.gitignore

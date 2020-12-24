@@ -7,9 +7,9 @@ WORKDIR /build
 ADD . .
 
 RUN CGO_ENABLED=1 GOOS=linux \
-    go build -ldflags '-extldflags "-static"' -o app
+    go build -ldflags '-extldflags "-w -s -static"' -o app
 
-FROM golang:alpine
+FROM scratch
 
 COPY --from=build /etc/ssl/certs/ca-certificates.crt \
      /etc/ssl/certs/ca-certificates.crt
