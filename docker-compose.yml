@@ -1,8 +1,10 @@
-# DON'T USE THIS YET - TODO, just template for automation
 version: "3.7"
+
 services:
   rumor:
     container_name: rumor
     image: rumor-kitty
     build: .
     restart: always
+    ports:
+      - 9000:9000
