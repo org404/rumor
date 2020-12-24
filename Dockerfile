@@ -18,7 +18,7 @@ COPY --from=build /etc/ssl/certs/ca-certificates.crt \
 COPY --from=build /build/app /app
 
 WORKDIR /
-COPY command.rumor .
+COPY scripts/command.rumor .
 
 ENTRYPOINT ["/app"]
 CMD ["file", "command.rumor"]

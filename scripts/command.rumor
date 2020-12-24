@@ -1,0 +1,8 @@
+s: host start
+s: host listen
+s: peerstore create
+s: host view
+# s: peer status serve
+# s: peer metadata serve
+# s: peer metadata poll --interval=30s  --timeout=10s  --update=true --update-timeout=20s --compression=snappy
+sleep 99999m
