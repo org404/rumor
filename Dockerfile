@@ -21,4 +21,3 @@ WORKDIR /
 COPY scripts/command.rumor .
 
 ENTRYPOINT ["/app"]
-CMD ["file", "command.rumor"]
