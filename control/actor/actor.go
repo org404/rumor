@@ -264,11 +264,11 @@ func (c *SleepCmd) Default() {
 
 func (c *SleepCmd) Run(ctx context.Context, args ...string) error {
 	if c.Time != 0 {
-		c.Log.Infof("sleeping %s", c.Time.String())
+		c.Log.Debugf("sleeping %s", c.Time.String())
 		ticker := time.NewTicker(c.Time)
 		select {
 		case <-ticker.C:
-			c.Log.Infoln("done sleeping!")
+			c.Log.Debugln("done sleeping!")
 			break
 		case <-ctx.Done():
 			c.Log.Infof("stopped sleep, exit early: %v", ctx.Err())

@@ -123,7 +123,7 @@ func (c *RpcMethodReqRawCmd) Run(ctx context.Context, args ...string) error {
 							f["data"] = hex.EncodeToString(bytez)
 						}
 					}
-					c.Log.WithFields(f).Info("Received chunk")
+					c.Log.WithFields(f).Debug("Received chunk")
 					if resultCode == reqresp.SuccessCode {
 						return nil
 					} else {
@@ -134,7 +134,7 @@ func (c *RpcMethodReqRawCmd) Run(ctx context.Context, args ...string) error {
 		if reqErr != nil {
 			c.Log.WithError(reqErr).Error("failed to make request")
 		} else {
-			c.Log.Infof("Completed request")
+			c.Log.Debugf("Completed request")
 		}
 	}()
 
