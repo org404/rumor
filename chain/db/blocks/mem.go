@@ -52,7 +52,7 @@ func (db *MemDB) Import(r io.Reader) (exists bool, err error) {
 	var dest beacon.SignedBeaconBlock
 	err = dest.Deserialize(db.spec, codec.NewDecodingReader(buf, uint64(len(buf.Bytes()))))
 	if err != nil {
-		return false, fmt.Errorf("failed to decode block, nee valid block to get block root. Err: %v", err)
+		return false, fmt.Errorf("failed to decode block, need valid block to get block root. Err: %v", err)
 	}
 	// Take the hash-tree-root of the BeaconBlock, ignore the signature.
 	root := dest.Message.HashTreeRoot(db.spec, tree.GetHashFn())
