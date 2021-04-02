@@ -1,6 +1,7 @@
 package dbcmd
 
 import (
+    "bytes"
 	"context"
 	"errors"
 	"fmt"
@@ -27,6 +28,7 @@ func (c *BlocksImportCmd) Run(ctx context.Context, args ...string) error {
 		if len(c.Data) == 0 {
 			return errors.New("no input data. Try --input or --data to import block from")
 		}
+        r = bytes.NewReader(c.Data)
 	} else {
 		f, err := os.OpenFile(c.Input, os.O_RDONLY, os.ModePerm)
 		if err != nil {
@@ -35,6 +37,10 @@ func (c *BlocksImportCmd) Run(ctx context.Context, args ...string) error {
 		defer f.Close()
 		r = f
 	}
+
+    if r == nil {
+        return fmt.Errorf("method is not implemented! (Reader value is %v)", r)
+    }
 	existed, err := c.DB.Import(r)
 	if err != nil {
 		return err
